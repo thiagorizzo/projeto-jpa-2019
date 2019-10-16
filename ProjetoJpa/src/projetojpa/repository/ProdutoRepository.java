@@ -54,6 +54,13 @@ public class ProdutoRepository implements IProdutoRepository {
         return em.find(Produto.class, codigo);
     }
     
+    public Produto create(Produto produto) throws SQLException {
+        EntityManager em = Repository.getEntityManager();
+        em.persist(produto);
+        Repository.update();
+        return produto;
+    }
+    
     public void remove(Produto produto) throws SQLException {
         EntityManager em = Repository.getEntityManager();
         em.remove(produto);
